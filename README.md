@@ -23,7 +23,7 @@ Our trained research scientists at **LAMBDA HEAVY INDUSTRIES&copy;™** call thi
 
 A Hugo program is a set of statements.
 
-1. A statement begins with a decimal number. This is the statement's label. Lines that do not begin with decimal number are comments.
+1. A statement begins with a decimal integer. This is the statement's label. Lines that do not begin with a decimal integer are comments.
 2. A statement is an expression in reverse Polish notation. The label is a part of the expression.
 3. A statement evaluates to the label of the next statement to execute. If no such statement exists, execution halts.
 
@@ -73,7 +73,7 @@ Name      | Syntax  | Effect
 ----------|---------|-------
 `literal` | `X`     | `push(X)`
 `save`    | `X Y $` | `Y = pop(); X = pop(); mem[Y] = X;`
-`load`    | `X &`   | `push(mem[X])`
+`load`    | `X &`   | `push(mem[pop()])`
 `read`    | `,`     | `push(getchar())`
 `write`   | `X .`   | `putchar(pop())`
 `add`     | `X Y +` | `Y = pop(); X = pop(); push(X + Y)`
@@ -85,7 +85,7 @@ Name      | Syntax  | Effect
 
 The Hugo execution model may use any appropriate word size<sup><a name="fnref3"></a>[3](#fn3)</sup> but should have at least 1048576 memory cells.<sup><a name="fnref4"></a>[4](#fn4)</sup>
 
-When `read` encounters EOF, the value pushed to the stack should be -1. 
+When `read` encounters EOF, the value pushed to the stack should be -1.
 
 Hugo can be interpreted or compiled, but should not be orally consumed in any significant quantity.<sup><a name="fnref5"></a>[5](#fn5)</sup>
 
@@ -135,7 +135,7 @@ This document and all associated code is released under the [MIT license](http:/
 
 <a name="fn3"></a>3. 37 bits, for example, would be inappropriate. Negative sizes would be inappropriate, offensive, and impractical.[&#8617;](#fnref3)
 
-<a name="fn4"></a>4. For reasons why, see Guyton and Hall Textbook of Medical Physiology, 12th edition. The short answer is "_performance_".[&#8617;](#fnref4)
+<a name="fn4"></a>4. For reasons why, see Guyton and Hall Textbook of Medical Physiology, 12th edition. The short answer is "performance".[&#8617;](#fnref4)
 
 <a name="fn5"></a>5. See footnote 4.[&#8617;](#fnref5)
 
