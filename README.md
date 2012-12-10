@@ -8,15 +8,15 @@
 
 **Hugo** is for programmers who feel _too constrained_ by the implicit sequencing of more _pedestrian_ programming languages!
 
-**Hugo** is designed and developed by your friends at **LAMBDA HEAVY INDUSTRIE&copy;™**
+**Hugo** is designed and developed by your friends at **LAMBDA HEAVY INDUSTRIES&copy;™**
 
 ## A Short Example
 ---
 The shortest non-terminating Hugo program is:
 
 	0
-	
-Our trained research scientists at **LAMBDA HEAVY INDUSTRIE&copy;™** call this _Looping Nullary Zero Combinator Prime_.[^1]
+
+Our trained research scientists at **LAMBDA HEAVY INDUSTRIES&copy;™** call this _Looping Nullary Zero Combinator Prime_.[^1]
 	
 ## Syntax
 ---
@@ -62,7 +62,7 @@ Since every statement is both a label and a goto, the statements comprising _ech
 	Read a value into memory cell 0
   	0 1 , 0 $ +
   	
-At **LAMBDA HEAVY INDUSTRIE&COPY;™**, we have found this to be a huge win for programmer ~~productivity~~ ~~satisfaction~~ job retention.
+At **LAMBDA HEAVY INDUSTRIES&copy;™**, we have found this to be a huge win for programmer ~~productivity~~ ~~satisfaction~~ job retention.
 
 ## Reverse Polish Notation Operators
 ---
@@ -128,12 +128,22 @@ Hugo and "Marvin's Implementation" were created by [Chris Parks](mailto:christop
 This document and all associated code is released under the [MIT license](http://opensource.org/licenses/MIT).
 
 [^1]: Patents pending, all rights reserved.
+
 [^2]: _echo_ was named by a different, less excitable group of trained research scientists.
+
 [^3]: 37 bits, for example, would be inappropriate. Negative sizes would be inappropriate, offensive, and impractical.
+
 [^4]: For reasons why, see Guyton and Hall Textbook of Medical Physiology, 12th edition. The short answer is "_performance_".
+
 [^5]: See footnote 4.
+
 [^6]: Our trained research scientists were positively aghast.
+
 [^7]: Proof by sufficiently complicated example.
+
 [^8]: Not his real name.
+
 [^9]: Who is emphatically not a high school student or known to anyone as Marvin.
+
 [^10]: Not that that's any kind of excuse.
+
