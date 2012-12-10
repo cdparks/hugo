@@ -16,7 +16,7 @@ The shortest non-terminating Hugo program is:
 
 	0
 
-Our trained research scientists at **LAMBDA HEAVY INDUSTRIES&copy;™** call this _Looping Nullary Zero Combinator Prime_.<sup><a id="fnref1"></a>[1](#fn1)</sup>
+Our trained research scientists at **LAMBDA HEAVY INDUSTRIES&copy;™** call this _Looping Nullary Zero Combinator Prime_.<sup><a name="fnref1"></a>[1](#fn1)</sup>
 	
 ## Syntax
 ---
@@ -46,7 +46,7 @@ A slightly more interesting program echos input to the screen until EOF is reach
  	Otherwise, halt
  	3 1 +
  	
-This program is called _echo_.<sup><a id="fnref2"></a>[2](#fn2)</sup>
+This program is called _echo_.<sup><a name="fnref2"></a>[2](#fn2)</sup>
 
 Since every statement is both a label and a goto, the statements comprising _echo_ can be put in any order.
 	
@@ -83,21 +83,21 @@ Name      | Syntax  | Effect
 ## Execution Details
 ---
 
-The Hugo execution model may use any appropriate word size<sup><a id="fnref3"></a>[3](#fn3)</sup> but should have at least 1048576 memory cells.<sup><a id="fnref4"></a>[4](#fn4)</sup>
+The Hugo execution model may use any appropriate word size<sup><a name="fnref3"></a>[3](#fn3)</sup> but should have at least 1048576 memory cells.<sup><a name="fnref4"></a>[4](#fn4)</sup>
 
 When `read` encounters EOF, the value pushed to the stack should be -1. 
 
-Hugo can be interpreted or compiled, but should not be orally consumed in any significant quantity.<sup><a id="fnref5"></a>[5](#fn5)</sup>
+Hugo can be interpreted or compiled, but should not be orally consumed in any significant quantity.<sup><a name="fnref5"></a>[5](#fn5)</sup>
 
 ## Completeness
 ---
 
-According to our trained research scientists, Hugo is Turing Complete. Included in the reference implementation is a Hugo program `bf.hugo` which implements an interpreter for a [programming language with an extremely rude name](http://en.wikipedia.org/wiki/Brainfuck)<sup><a id="fnref6"></a>[6](#fn6)</sup>. Since the rudely-named language has been proven Turing Complete, and Hugo can implement it, we can say that Hugo is Turing Complete.<sup><a id="fnref7"></a>[7](#fn7)</sup>
+According to our trained research scientists, Hugo is Turing Complete. Included in the reference implementation is a Hugo program `bf.hugo` which implements an interpreter for a [programming language with an extremely rude name](http://en.wikipedia.org/wiki/Brainfuck)<sup><a name="fnref6"></a>[6](#fn6)</sup>. Since the rudely-named language has been proven Turing Complete, and Hugo can implement it, we can say that Hugo is Turing Complete.<sup><a name="fnref7"></a>[7](#fn7)</sup>
 
 ## Reference Implementation
 ---
 
-Here at **LAMBDA HEAVY INDUSTRIES&copy;™**, our trained research scientists are so committed to theoretical purity, that they have elected _not_ to implement Hugo. We have therefore contracted with a local high school student named Marvin<sup><a id="fnref8"></a>[8](#fn8)</sup> to produce a reference implementation.
+Here at **LAMBDA HEAVY INDUSTRIES&copy;™**, our trained research scientists are so committed to theoretical purity, that they have elected _not_ to implement Hugo. We have therefore contracted with a local high school student named Marvin<sup><a name="fnref8"></a>[8](#fn8)</sup> to produce a reference implementation.
 
 Marvin's implementation (hereafter referred to as "Marvin's Implementation") includes an interpreter and a compiler.
 
@@ -123,30 +123,30 @@ For more information, run:
 
 **LAMBDA HEAVY INDUSTRIES&copy;™** is copyright and trademark of **LAMBDA HEAVY INDUSTRIES&copy;™**.
 
-Hugo and "Marvin's Implementation" were created by [Chris Parks](mailto:christopher.daniel.parks@gmail.com)<sup><a id="fnref9"></a>[9](#fn9)</sup> for the PLT Games [Turing Tarpit Competition](http://www.pltgames.com/competition/2012/12) of December 2012.<sup><a id="fnref10"></a>[10](#fn10)</sup>
+Hugo and "Marvin's Implementation" were created by [Chris Parks](mailto:christopher.daniel.parks@gmail.com)<sup><a name="fnref9"></a>[9](#fn9)</sup> for the PLT Games [Turing Tarpit Competition](http://www.pltgames.com/competition/2012/12) of December 2012.<sup><a name="fnref10"></a>[10](#fn10)</sup>
 
 This document and all associated code is released under the [MIT license](http://opensource.org/licenses/MIT).
 
 ---
 
-<a id="fn1"></a>1. Patents pending, all rights reserved.[&#8617;](#fnref1)
+<a name="fn1"></a>1. Patents pending, all rights reserved.[&#8617;](#fnref1)
 
-<a id="fn2"></a>2. _echo_ was named by a different, less excitable group of trained research scientists.[&#8617;](#fnref2)
+<a name="fn2"></a>2. _echo_ was named by a different, less excitable group of trained research scientists.[&#8617;](#fnref2)
 
-<a id="fn3"></a>3. 37 bits, for example, would be inappropriate. Negative sizes would be inappropriate, offensive, and impractical.[&#8617;](#fnref3)
+<a name="fn3"></a>3. 37 bits, for example, would be inappropriate. Negative sizes would be inappropriate, offensive, and impractical.[&#8617;](#fnref3)
 
-<a id="fn4"></a>4. For reasons why, see Guyton and Hall Textbook of Medical Physiology, 12th edition. The short answer is "_performance_".[&#8617;](#fnref4)
+<a name="fn4"></a>4. For reasons why, see Guyton and Hall Textbook of Medical Physiology, 12th edition. The short answer is "_performance_".[&#8617;](#fnref4)
 
-<a id="fn5"></a>5. See footnote 4.[&#8617;](#fnref5)
+<a name="fn5"></a>5. See footnote 4.[&#8617;](#fnref5)
 
-<a id="fn6"></a>6. Our trained research scientists were positively aghast.[&#8617;](#fnref6)
+<a name="fn6"></a>6. Our trained research scientists were positively aghast.[&#8617;](#fnref6)
 
-<a id="fn7"></a>7. Proof by sufficiently complicated example.[&#8617;](#fnref7)
+<a name="fn7"></a>7. Proof by sufficiently complicated example.[&#8617;](#fnref7)
 
-<a id="fn8"></a>8. Not his real name.[&#8617;](#fnref8)
+<a name="fn8"></a>8. Not his real name.[&#8617;](#fnref8)
 
-<a id="fn9"></a>9. Who is emphatically not a high school student or known to anyone as Marvin.[&#8617;](#fnref9)
+<a name="fn9"></a>9. Who is emphatically not a high school student or known to anyone as Marvin.[&#8617;](#fnref9)
 
-<a id="fn10"></a>10. Not that that's any kind of excuse.[&#8617;](#fnref10)
+<a name="fn10"></a>10. Not that that's any kind of excuse.[&#8617;](#fnref10)
 
 
