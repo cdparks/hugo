@@ -1,0 +1,12 @@
+Read a value into memory cell 0
+0 1 , 0 $ +
+
+Compare value to -1
+1 1 0 & 0 1 - = + +
+
+If value is not -1, print it and jump to beginning
+2 2 0 & . -
+
+Otherwise, halt
+3 1 +
+
