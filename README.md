@@ -11,7 +11,6 @@
 **Hugo** is designed and developed by your friends at **LAMBDA HEAVY INDUSTRIES&copy;™**
 
 ## A Short Example
----
 The shortest non-terminating Hugo program is:
 
     0
@@ -19,7 +18,6 @@ The shortest non-terminating Hugo program is:
 Our trained research scientists at **LAMBDA HEAVY INDUSTRIES&copy;™** call this _Looping Nullary Zero Combinator Prime_.<sup><a name="fnref1"></a>[1](#fn1)</sup>
 
 ## Syntax
----
 
 A Hugo program is a set of statements.
 
@@ -65,7 +63,6 @@ Since every statement is both a label and a goto, the statements comprising _ech
 At **LAMBDA HEAVY INDUSTRIES&copy;™**, we have found this to be a huge win for programmer ~~productivity~~ ~~satisfaction~~ job retention.
 
 ## Reverse Polish Notation Operators
----
 
 As _echo_ hinted above, the following RPN operators are supported:
 
@@ -81,7 +78,6 @@ Name      | Syntax  | Effect
 `eql`     | `X Y =` | `Y = pop(); X = pop(); push(X == Y)`
 
 ## Execution Details
----
 
 The Hugo execution model may use any appropriate word size<sup><a name="fnref3"></a>[3](#fn3)</sup> but should have at least 1048576 memory cells.<sup><a name="fnref4"></a>[4](#fn4)</sup>
 
@@ -90,12 +86,10 @@ When `read` encounters EOF, the value pushed to the stack should be -1.
 Hugo can be interpreted or compiled, but should not be orally consumed in any significant quantity.<sup><a name="fnref5"></a>[5](#fn5)</sup>
 
 ## Completeness
----
 
 According to our trained research scientists, Hugo is Turing Complete. Included in the reference implementation is a Hugo program `bf.hugo` which implements an interpreter for a [programming language with an extremely rude name](http://en.wikipedia.org/wiki/Brainfuck)<sup><a name="fnref6"></a>[6](#fn6)</sup>. Since the rudely-named language has been proven Turing Complete, and Hugo can implement it, we can say that Hugo is Turing Complete.<sup><a name="fnref7"></a>[7](#fn7)</sup>
 
 ## Reference Implementation
----
 
 Here at **LAMBDA HEAVY INDUSTRIES&copy;™**, our trained research scientists are so committed to theoretical purity, that they have elected _not_ to implement Hugo. We have therefore contracted with a local high school student named Marvin<sup><a name="fnref8"></a>[8](#fn8)</sup> to produce a reference implementation.
 
@@ -119,7 +113,6 @@ For more information, run:
     $ python hugo.py compile --help
 
 ## Final Remarks
----
 
 **LAMBDA HEAVY INDUSTRIES&copy;™** is copyright and trademark of **LAMBDA HEAVY INDUSTRIES&copy;™**.
 
