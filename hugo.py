@@ -1,4 +1,21 @@
+# !/usr/bin/env python
 # encoding: utf-8
+
+# author: Chris Parks
+# email: christopher.daniel.parks@gmail.com
+# copyright: 2012, Chris Parks
+# license: MIT
+
+'''
+Hugo Uses Gotos Only!
+
+hugo.py - an interpreter and compiler for the Hugo programming
+language. For more information run:
+    $ python hugo.py --help
+    $ python hugo.py run --help
+    $ python hugo.py compile --help
+'''
+
 from __future__ import unicode_literals, print_function
 
 import sys
@@ -10,6 +27,7 @@ from src.vm import run
 from src.gen import gen
 
 def interpret(options):
+    '''Parse and run each file in options.filenames'''
     for filename in options.filenames:
         try:
             _, source = parse(filename)
@@ -19,31 +37,41 @@ def interpret(options):
             sys.exit(1)
 
 def compile(options):
+    '''Parse and compile each file in options.filenames'''
     for filename in options.filenames:
         try:
             maxstack, source = parse(filename)
+
+            # Do the bare minimum to keep the user from overwriting their source file.
             name, ext = os.path.splitext(filename)
             if ext != '.hugo':
                 raise Exception("Expected extension .hugo on filename '{}'.".format(filename))
+
+            # Generate and write C source
             cfilename = name + '.c'
             with open(cfilename, 'w') as stream:
                 stream.write(gen(maxstack, source))
+
+            # Compile using default or specified compiler
             command = [
                 options.compiler,
                 cfilename,
                 '-o ' + name,
                 '-O' + options.O,
             ]
+
             if options.g:
                 command.append('-g')
             if options.verbose:
                 command.append('-DVERBOSE_EXECUTION')
+
+            # Running w/o shell=True seems to confuse ld on OS X
             subprocess.call(' '.join(command), shell=True)
         except Exception as e:
             print("{}: {}: {}".format(filename, e.__class__.__name__, e))
             sys.exit(1)
 
-if __name__ == '__main__':
+def main():
     import argparse
     parser = argparse.ArgumentParser(
         description='Hugo interpreter and compiler',
@@ -54,6 +82,7 @@ if __name__ == '__main__':
         help='Available subcommands',
     )
 
+    # Subcommand for compilation
     cparser = subparsers.add_parser(
         'compile',
         description='Compile source to C and use C-compiler to produce executable',
@@ -89,6 +118,7 @@ if __name__ == '__main__':
     )
     cparser.set_defaults(command=compile)
 
+    # Subcommand for interpretation
     rparser = subparsers.add_parser(
         'run',
         description='Interpret Hugo source directly',
@@ -112,4 +142,7 @@ if __name__ == '__main__':
         options.command(options)
     else:
         parser.error('Must specify compile or run')
+
+if __name__ == '__main__':
+    main()
 

@@ -14,7 +14,6 @@ except ImportError:
     from StringIO import StringIO
 
 prologue = Template('''#include <stdio.h>
-
 static int memory[1024 * 1024];
 static int stack[$maxstack];
 static size_t sp = 0;
@@ -48,7 +47,7 @@ void PSYM(char *sym) {
     fprintf(stderr, "%4s | ", sym);
     PSTACK();
 }
-void PTOP() {
+void PTOS() {
     fprintf(stderr, "     | %d\\n", stack[sp - 1]);
 }
 #else
@@ -56,7 +55,7 @@ void PTOP() {
 #define PSTACK(x)
 #define PNUM(x)
 #define PSYM(x)
-#define PTOP(x)
+#define PTOS(x)
 #endif
 
 int main() {
@@ -68,7 +67,7 @@ int main() {
 epilogue = '''default:
         goto halt;
     }
-    PTOP();
+    PTOS();
     label = POP();
   }
 halt:
@@ -76,8 +75,9 @@ halt:
 }
 '''
 
-
 class Writer(object):
+    '''Wrap a StringIO object for easy code generation'''
+
     def __init__(self, content=None, level=0, indentstr='  '):
         self.io = StringIO()
         self.level = level
@@ -86,26 +86,35 @@ class Writer(object):
             self.io.write(content)
 
     def write(self, value):
+        '''Append indented value to output stream'''
         self.io.write('{}{}'.format(self.indentstr * self.level, value))
         return self
 
     def writeln(self, line):
+        '''Append indented line to output stream'''
         return self.write(line + '\n')
 
     def indent(self, levels=1):
+        '''Increase indent level'''
         self.level += levels
         return self
 
     def dedent(self, levels=1):
+        '''Decrease indent level'''
         self.level = max(0, self.level - levels)
         return self
 
     def value(self):
+        '''Return complete string content'''
         return self.io.getvalue()
 
 def gen(maxstack, source):
+    '''Generate C code from source'''
     out = Writer(prologue.substitute(maxstack=maxstack))
     out.indent(3)
+
+    # Each label and expression will be made into a case
+    # statement in the C program's main switch statement.
     for label, expression in sorted(source.items()):
         out.writeln('case {}:'.format(label)).indent()
         out.writeln('PEXPR("{}");'.format(' '.join(map(str, expression))))
