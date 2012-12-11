@@ -14,10 +14,10 @@
 ---
 The shortest non-terminating Hugo program is:
 
-	0
+    0
 
 Our trained research scientists at **LAMBDA HEAVY INDUSTRIES&copy;™** call this _Looping Nullary Zero Combinator Prime_.<sup><a name="fnref1"></a>[1](#fn1)</sup>
-	
+
 ## Syntax
 ---
 
@@ -29,39 +29,39 @@ A Hugo program is a set of statements.
 
 With that knowledge in hand, we can better explain how _Looping Nullary Zero Combinator Prime_ works:
 
-	Start at label 0, evalute 0 (to 0), and jump to 0.
-	0
+    Start at label 0, evalute 0 (to 0), and jump to 0.
+    0
 
 A slightly more interesting program echos input to the screen until EOF is reached:
 
-	Read a value into memory cell 0
-  	0 1 , 0 $ +
-  	
-  	Compare value to -1
-  	1 1 0 & 0 1 - = + +
-  
-  	If value is not -1, print it and jump to beginning
-  	2 2 0 & . -
-  	
- 	Otherwise, halt
- 	3 1 +
- 	
+    Read a value into memory cell 0
+    0 1 , 0 $ +
+
+    Compare value to -1
+    1 1 0 & 0 1 - = + +
+
+    If value is not -1, print it and jump to beginning
+    2 2 0 & . -
+
+    Otherwise, halt
+    3 1 +
+
 This program is called _echo_.<sup><a name="fnref2"></a>[2](#fn2)</sup>
 
 Since every statement is both a label and a goto, the statements comprising _echo_ can be put in any order.
-	
-  	Compare value to -1
-  	1 1 0 & 0 1 - = + +
-  	
- 	Otherwise, halt
- 	3 1 +
- 	
-  	If value is not -1, print it and jump to beginning
-  	2 2 0 & . -
-  	
-	Read a value into memory cell 0
-  	0 1 , 0 $ +
-  	
+
+    Compare value to -1
+    1 1 0 & 0 1 - = + +
+
+    Otherwise, halt
+    3 1 +
+
+    If value is not -1, print it and jump to beginning
+    2 2 0 & . -
+
+    Read a value into memory cell 0
+    0 1 , 0 $ +
+
 At **LAMBDA HEAVY INDUSTRIES&copy;™**, we have found this to be a huge win for programmer ~~productivity~~ ~~satisfaction~~ job retention.
 
 ## Reverse Polish Notation Operators
@@ -103,20 +103,20 @@ Marvin's implementation (hereafter referred to as "Marvin's Implementation") inc
 
 The following commands show how to run `bf.hugo`:
 
-	# Via interpretation
-	$ python hugo.py run examples/bf.hugo < examples/hello.bf
-	Hello World!
-	
-	# Via compilation
-	$ python hugo.py compile examples/bf.hugo
-	$ ./examples/bf < examples/hello.bf
-	Hello World!
-		
+    # Via interpretation
+    $ python hugo.py run examples/bf.hugo < examples/hello.bf
+    Hello World!
+
+    # Via compilation
+    $ python hugo.py compile examples/bf.hugo
+    $ ./examples/bf < examples/hello.bf
+    Hello World!
+
 For more information, run:
 
-	$ python hugo.py --help
-	$ python hugo.py run --help
-	$ python hugo.py compile --help
+    $ python hugo.py --help
+    $ python hugo.py run --help
+    $ python hugo.py compile --help
 
 ## Final Remarks
 ---
@@ -125,7 +125,7 @@ For more information, run:
 
 Hugo and "Marvin's Implementation" were created by [Chris Parks](mailto:christopher.daniel.parks@gmail.com)<sup><a name="fnref9"></a>[9](#fn9)</sup> for the PLT Games [Turing Tarpit Competition](http://www.pltgames.com/competition/2012/12) of December 2012.<sup><a name="fnref10"></a>[10](#fn10)</sup>
 
-This document and all associated code is released under the [MIT license](http://opensource.org/licenses/MIT).
+This document and [all associated code](https://github.com/cdparks/hugo) is released under the [MIT license](http://opensource.org/licenses/MIT).
 
 ---
 
