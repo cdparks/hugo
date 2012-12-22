@@ -6,7 +6,7 @@ __all__ = ['gen']
 from string import Template
 
 from src.parse import parse
-from src.vm import operators
+from src.vm import instructions, decode, pexpr
 
 try:
     from io import StringIO
@@ -117,13 +117,13 @@ def gen(maxstack, source):
     # statement in the C program's main switch statement.
     for label, expression in sorted(source.items()):
         out.writeln('case {}:'.format(label)).indent()
-        out.writeln('PEXPR("{}");'.format(' '.join(map(str, expression))))
+        out.writeln('PEXPR("{}");'.format(pexpr(expression)))
         for word in expression:
-            function = operators.get(word)
-            if function is not None:
-                out.writeln('PSYM("{}"); {}();'.format(function.sym, function.__name__.upper()))
+            x = decode(word)
+            if hasattr(x, 'code'):
+                out.writeln(x.code)
             else:
-                out.writeln('PNUM({0}); PUSH({0});'.format(word))
+                out.writeln('PNUM({0}); PUSH({0});'.format(x))
         out.writeln("break;").dedent()
     return out.write(epilogue).value()
 

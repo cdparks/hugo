@@ -4,7 +4,7 @@ from __future__ import unicode_literals, print_function
 __all__ = ['parse']
 
 from collections import namedtuple
-from src.vm import operators
+from src.vm import symbols, literal
 
 Token = namedtuple('Token', 'tag value')
 EOL, OPERATOR, INTEGER, OTHER = range(4)
@@ -14,8 +14,8 @@ def tokenize(line):
        instead of RPN.
     '''
     for word in line.split():
-        if word in operators:
-            yield Token(OPERATOR, operators[word])
+        if word in symbols:
+            yield Token(OPERATOR, symbols[word])
         elif word.isdigit():
             yield Token(INTEGER, int(word))
         else:
@@ -26,21 +26,21 @@ def parseExpr(line, maxstack, label, stream):
     '''Verify that current line is a valid RPN expression. Return maximum
        stack size and expression as a list of symbols.
     '''
-    expression = [label]
+    expression = [literal(label)]
     stack = 1
     for token in stream:
         if token.tag == INTEGER:
             stack += 1
             maxstack = max(stack, maxstack)
-            expression.append(token.value)
+            expression.append(literal(token.value))
         elif token.tag == OPERATOR:
-            function = token.value
-            if stack < function.pop:
-                raise SyntaxError("{}: Too few arguments to {} at label {}".format(line, function.sym, label))
-            stack -= function.pop
-            stack += function.add
+            instruction = token.value
+            if stack < instruction.pop:
+                raise SyntaxError("{}: Too few arguments to {} at label {}".format(line, instruction.sym, label))
+            stack -= instruction.pop
+            stack += instruction.push
             maxstack = max(stack, maxstack)
-            expression.append(function.sym)
+            expression.append(instruction.idx)
         elif token.tag == EOL:
             break
         else:
