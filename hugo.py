@@ -30,8 +30,8 @@ def interpret(options):
     '''Parse and run each file in options.filenames'''
     for filename in options.filenames:
         try:
-            _, source = parse(filename)
-            run(source, options.verbose)
+            maxstack, source = parse(filename)
+            run(maxstack, source, options.verbose)
         except Exception as e:
             print("{}: {}: {}".format(filename, e.__class__.__name__, e))
             sys.exit(1)

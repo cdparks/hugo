@@ -6,7 +6,7 @@ __all__ = ['gen']
 from string import Template
 
 from src.parse import parse
-from src.vm import instructions, decode, pexpr
+from src.vm import instructions, pExpr
 
 try:
     from io import StringIO
@@ -30,7 +30,7 @@ static size_t sp = 0;
 
 #ifdef VERBOSE_EXECUTION
 void PEXPR(char *expr) {
-    fprintf(stderr, "goto %s\\n", expr);
+    fprintf(stderr, "%s\\n", expr);
 }
 void PSTACK() {
     size_t i;
@@ -117,13 +117,9 @@ def gen(maxstack, source):
     # statement in the C program's main switch statement.
     for label, expression in sorted(source.items()):
         out.writeln('case {}:'.format(label)).indent()
-        out.writeln('PEXPR("{}");'.format(pexpr(expression)))
-        for word in expression:
-            x = decode(word)
-            if hasattr(x, 'code'):
-                out.writeln(x.code)
-            else:
-                out.writeln('PNUM({0}); PUSH({0});'.format(x))
+        out.writeln('PEXPR("{}");'.format(pExpr(expression)))
+        for instruction in expression:
+            out.writeln(instruction.ccode())
         out.writeln("break;").dedent()
     return out.write(epilogue).value()
 
