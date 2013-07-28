@@ -51,7 +51,8 @@ class Instruction(object):
 
 class Write(Instruction):
     def gen(self, context):
-        pass
+        x = context.pop()
+        context.write(x)
 
     def run(self, vm):
         '''Write TOS to stdout as ascii'''
@@ -60,7 +61,7 @@ class Write(Instruction):
 
 class Read(Instruction):
     def gen(self, context):
-        pass
+        context.push(context.read())
 
     def run(self, vm):
         '''Push one value from stdin or -1 on EOF'''
@@ -71,7 +72,9 @@ class Read(Instruction):
 
 class Save(Instruction):
     def gen(self, context):
-        pass
+        addr = context.pop()
+        value = context.pop()
+        context.save(value, addr)
 
     def run(self, vm):
         '''Save value at TOS-1 in address at TOS'''
@@ -81,7 +84,9 @@ class Save(Instruction):
 
 class Load(Instruction):
     def gen(self, context):
-        pass
+        addr = context.pop()
+        value = context.load(addr)
+        context.push(value)
 
     def run(self, vm):
         '''Load value from address at TOS'''
@@ -89,7 +94,9 @@ class Load(Instruction):
 
 class Add(Instruction):
     def gen(self, context):
-        pass
+        y = context.pop()
+        x = context.pop()
+        context.push(context.add(x, y))
 
     def run(self, vm):
         '''Push (TOS-1) + TOS'''
@@ -97,7 +104,9 @@ class Add(Instruction):
 
 class Sub(Instruction):
     def gen(self, context):
-        pass
+        y = context.pop()
+        x = context.pop()
+        context.push(context.sub(x, y))
 
     def run(self, vm):
         '''Push (TOS-1) - TOS'''
@@ -105,7 +114,9 @@ class Sub(Instruction):
 
 class Eql(Instruction):
     def gen(self, context):
-        pass
+        y = context.pop()
+        x = context.pop()
+        context.push(context.eql(x, y))
 
     def run(self, vm):
         '''Push (TOS-1) == TOS'''
@@ -129,7 +140,7 @@ class Push(Instruction):
         return 'PNUM({0}); PUSH({0});'.format(self.value)
 
     def gen(self, context):
-        pass
+        context.push(self.value)
 
     def run(self, vm):
         '''Push value on stack'''
