@@ -1,5 +1,7 @@
 # encoding: utf-8
-from __future__ import unicode_literals, print_function
+
+# llvm API expects byte-strings for most names, so ignore this for now
+# from __future__ import unicode_literals, print_function
 
 __all__ = ['buildModule']
 
