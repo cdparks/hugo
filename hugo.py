@@ -162,7 +162,7 @@ def main():
     )
     llvmparser.add_argument(
         '-O',
-        choices='01234',
+        choices='0123',
         default='2',
         help='Optimization level for llc. Default is -O2',
     )
