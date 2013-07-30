@@ -41,7 +41,7 @@ class Instruction(object):
             self.__class__.__name__.upper(),
         )
 
-    def gen(self, context):
+    def gen(self, module, builder, stack):
         '''Generate llvm code for instruction'''
         raise NotImplemented
 
@@ -50,9 +50,9 @@ class Instruction(object):
         raise notImplemented
 
 class Write(Instruction):
-    def gen(self, context):
-        x = context.pop()
-        context.write(x)
+    def gen(self, module, builder, stack):
+        putchar = module.get_function_named(b'putchar')
+        builder.call(putchar, [stack.pop()])
 
     def run(self, vm):
         '''Write TOS to stdout as ascii'''
@@ -60,8 +60,9 @@ class Write(Instruction):
         sys.stdout.write(chr(x))
 
 class Read(Instruction):
-    def gen(self, context):
-        context.push(context.read())
+    def gen(self, module, builder, stack):
+        getchar = module.get_function_named(b'getchar')
+        stack.append(builder.call(getchar, []))
 
     def run(self, vm):
         '''Push one value from stdin or -1 on EOF'''
@@ -71,10 +72,11 @@ class Read(Instruction):
             vm.push(-1)
 
 class Save(Instruction):
-    def gen(self, context):
-        addr = context.pop()
-        value = context.pop()
-        context.save(value, addr)
+    def gen(self, module, builder, stack):
+        addr = stack.pop()
+        value = stack.pop()
+        save = module.get_function_named(b'save')
+        builder.call(save, [value, addr])
 
     def run(self, vm):
         '''Save value at TOS-1 in address at TOS'''
@@ -83,40 +85,41 @@ class Save(Instruction):
         vm.save(value, addr)
 
 class Load(Instruction):
-    def gen(self, context):
-        addr = context.pop()
-        value = context.load(addr)
-        context.push(value)
+    def gen(self, module, builder, stack):
+        addr = stack.pop()
+        load = module.get_function_named(b'load')
+        stack.append(builder.call(load, [addr]))
 
     def run(self, vm):
         '''Load value from address at TOS'''
         vm.push(vm.load(vm.pop()))
 
 class Add(Instruction):
-    def gen(self, context):
-        y = context.pop()
-        x = context.pop()
-        context.push(context.add(x, y))
+    def gen(self, module, builder, stack):
+        y = stack.pop()
+        x = stack.pop()
+        stack.append(builder.add(x, y))
 
     def run(self, vm):
         '''Push (TOS-1) + TOS'''
         binop(operator.add, vm)
 
 class Sub(Instruction):
-    def gen(self, context):
-        y = context.pop()
-        x = context.pop()
-        context.push(context.sub(x, y))
+    def gen(self, module, builder, stack):
+        y = stack.pop()
+        x = stack.pop()
+        stack.append(builder.sub(x, y))
 
     def run(self, vm):
         '''Push (TOS-1) - TOS'''
         binop(operator.sub, vm)
 
 class Eql(Instruction):
-    def gen(self, context):
-        y = context.pop()
-        x = context.pop()
-        context.push(context.eql(x, y))
+    def gen(self, module, builder, stack):
+        import genllvm
+        y = stack.pop()
+        x = stack.pop()
+        stack.append(genllvm.eql(builder, x, y))
 
     def run(self, vm):
         '''Push (TOS-1) == TOS'''
@@ -139,8 +142,9 @@ class Push(Instruction):
         '''Generate C-code to push int on stack'''
         return 'PNUM({0}); PUSH({0});'.format(self.value)
 
-    def gen(self, context):
-        context.push(self.value)
+    def gen(self, module, builder, stack):
+        import genllvm
+        stack.append(genllvm.num(self.value))
 
     def run(self, vm):
         '''Push value on stack'''
