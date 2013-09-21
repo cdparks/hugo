@@ -1,11 +1,12 @@
 Machine:
     Instruction pointer is at 0
     Memory pointer is at 1
-    Program begins at 2
+    Braces stack is at 2
+    Program begins at 3
     BF memory begins after program
 
 Save beginning of program as initial instruction pointer
-0 2 0 $ 1 +
+0 3 0 $ 1 +
 
 -- Start of read loop --
 
@@ -24,10 +25,13 @@ Program is read. Save program counter + 1 as start of bf memory
 -- End of read loop --
 
 Reset program counter
-5 1 0 $ 19 +
+5 2 0 $ 19 +
 
 Increment program counter
-24 18 0 & 1 + 0 $ -
+24 1 0 & 1 + 0 $ +
+
+Reset braces stack to 1 and jump to 6
+25 19 1 2 $ -
 
 -- Start of execution loop --
 
@@ -58,21 +62,48 @@ Left? <
 Enter loop? [
 13 2 0 & & 91 = + +
 
-    If current memory contents are nonzero, enter loop
-    16 8 1 & & 0 = + +
+    If current memory contents are zero ...
+    16 24 1 & & 0 = + +
 
-    Otherwise, find the next ]
-    25 1 0 & 1 + 0 $ +
-    26 1 0 & & 93 = + -
+        -- Find the matching ] --
+
+        While the braces stack is nonzero
+        41 2 2 & 0 = + +
+
+            Increment program counter
+            43 2 0 & 1 + 0 $ +
+
+            Mutate braces stack by current instruction
+            45 4 2 & 0 & & 93 = 0 & & 91 = - - 2 $ -
+
+        Then jump back to 24
+        44 20 -
+
+    Otherwise, enter the loop by jumping back to 24
+    40 16 -
 
 Jump back? ]
 15 2 0 & & 93 = + +
 
-    Find the closest previous [
-    18 10 0 & 1 - 0 $ +
-    28 1 0 & & 91 = + +
-    29 11 -
-    30 6 0 & 1 - 0 $ -
+    If current memory contents are non zero ...
+    18 36 1 & & 0 = + +
+
+        -- Find the matching [ --
+
+        While the braces stack is nonzero
+        54 2 2 & 0 = + +
+
+            Decrement program counter
+            56 2 0 & 1 - 0 $ +
+
+            Mutate braces stack by current instruction
+            58 4 2 & 0 & & 93 = 0 & & 91 = - + 2 $ -
+
+        Then jump back to 24
+        57 33 -
+
+    Otherwise, contine by jumping back to 24
+    55 31 -
 
 Write? .
 17 2 0 & & 46 = + +
