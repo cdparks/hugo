@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Hugo** **U**ses **G**otos **O**nly!
+**Hugo** Uses Gotos Only!
 
 **Hugo** is _The Language of the Future!_
 
