@@ -91,9 +91,7 @@ According to our trained research scientists, Hugo is Turing Complete. Included 
 
 ## Reference Implementation
 
-Here at **LAMBDA HEAVY INDUSTRIES&copy;™**, our trained research scientists are so committed to theoretical purity, that they have elected _not_ to implement Hugo. We have therefore contracted with a local high school student named Marvin<sup><a name="fnref8"></a>[8](#fn8)</sup> to produce a reference implementation.
-
-Marvin's implementation (hereafter referred to as "Marvin's Implementation") includes an interpreter and a compiler that can generate C or LLVM IR<sup><a name="fnref9"></a>[9](#fn9)</sup>.
+Here at **LAMBDA HEAVY INDUSTRIES&copy;™**, our trained research scientists are so committed to theoretical purity, that they have elected _not_ to implement Hugo. We have therefore contracted with a local programmer to produce a reference implementation. The Reference Implementation (hereafter referred to as "The Reference Implementation") includes an interpreter and a compiler that can generate C or LLVM IR<sup><a name="fnref8"></a>[8](#fn8)</sup>.
 
 The following commands show how to run `bf.hugo`:
 
@@ -122,7 +120,7 @@ For more information, run:
 
 **LAMBDA HEAVY INDUSTRIES&copy;™** is copyright and trademark of **LAMBDA HEAVY INDUSTRIES&copy;™**.
 
-Hugo and "Marvin's Implementation" were created by [Chris Parks](mailto:christopher.daniel.parks@gmail.com)<sup><a name="fnref10"></a>[10](#fn10)</sup> for the PLT Games [Turing Tarpit Competition](http://www.pltgames.com/competition/2012/12) of December 2012.<sup><a name="fnref11"></a>[11](#fn11)</sup>
+Hugo and The Reference Implementation were created by [Chris Parks](mailto:christopher.daniel.parks@gmail.com) for the PLT Games [Turing Tarpit Competition](http://www.pltgames.com/competition/2012/12) of December 2012.<sup><a name="fnref9"></a>[9](#fn9)</sup>
 
 This document and [all associated code](https://github.com/cdparks/hugo) is released under the [MIT license](http://opensource.org/licenses/MIT).
 
@@ -142,12 +140,7 @@ This document and [all associated code](https://github.com/cdparks/hugo) is rele
 
 <a name="fn7"></a>7. Proof by sufficiently complicated example.[&#8617;](#fnref7)
 
-<a name="fn8"></a>8. Not his real name.[&#8617;](#fnref8)
+<a name="fn8"></a>8. We're as surprised as you are.[&#8617;](#fnref8)
 
-<a name="fn9"></a>9. We're as surprised as you are.[&#8617;](#fnref9)
-
-<a name="fn10"></a>10. Who is emphatically not a high school student or known to anyone as Marvin.[&#8617;](#fnref10)
-
-<a name="fn11"></a>11. Not that that's any kind of excuse.[&#8617;](#fnref11)
-
+<a name="fn9"></a>9. Not that that's any kind of excuse.[&#8617;](#fnref9)
 
